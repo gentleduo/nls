@@ -53,6 +53,54 @@ INSERT INTO `emp` VALUES (7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300.00, 
 
 整个ID可以理解为：同一毫秒，同一台机器，可以生成2的12次方个不同的ID，所以每毫秒可以生成4096个不重复的ID，如果换算成TPS的话那就是每秒可生成409.6万个不重复的ID
 
+# web
 
+```cmd
+ D:\Java-Workspace\nls> npm create vite@5.0.0 web --template vue
+Need to install the following packages:
+  create-vite@5.0.0
+Ok to proceed? (y) y
+? Select a framework: » - Use arrow-keys. Return to submit.
+>   Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla                                                
+√ Select a framework: » Vue                              
+√ Select a variant: » JavaScript                   
+                                                   
+Scaffolding project in D:\Java-Workspace\nls\web...
 
+Done. Now run:
 
+  cd web     
+  npm install
+  npm run dev
+  
+D:\Java-Workspace\nls\web> npm install --save ant-design-vue@4.1.0
+
+D:\Java-Workspace\nls\web> npm install --save @ant-design/icons-vue
+
+# study版本： 4.2.5
+D:\Java-Workspace\nls\web> npm install vue-router
+
+D:\Java-Workspace\nls\web> npm install axios
+```
+
+> **npm的package.json，就相当于maven的pom.xml**
+>
+> package-lock.json：表示锁定小版本
+>
+> --save：表示下载依赖的同时，更新package.json文件
