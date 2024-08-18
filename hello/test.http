@@ -1,0 +1,10 @@
+GET http://localhost:18000/nls/hello
+Accep: appliction/json
+
+###
+GET http://localhost:18000/nls/count
+Accep: appliction/json
+
+###
+GET http://localhost:18000/nls/query?deptno=20
+Accep: appliction/json
