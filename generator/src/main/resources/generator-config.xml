@@ -50,6 +50,6 @@
         <!--        <table tableName="t_biz_dict"/>-->
         <!--        <table tableName="t_apply_detail"/>-->
         <!--        <table tableName="t_apply_loan"/>-->
-        <table tableName="emp" domainObjectName="Emp"/>
+        <table tableName="sms_code" domainObjectName="SmsCode"/>
     </context>
 </generatorConfiguration>
