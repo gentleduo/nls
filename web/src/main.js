@@ -6,6 +6,7 @@ import 'ant-design-vue/dist/reset.css'
 import * as Icons from '@ant-design/icons-vue'
 import router from "./router"
 import axios from "axios";
+import store from "./store/index.js";
 
 const app = createApp(App);
 const icons = Icons;

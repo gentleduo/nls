@@ -33,7 +33,7 @@
             </a-input-password>
           </a-form-item>
 
-<!--          <a-form-item name="imageCode" class="form-item"
+          <a-form-item name="imageCode" class="form-item"
                        :rules="[{ required: true, message: '请输入图片验证码', trigger: 'blur' }]">
             <a-input v-model:value="loginMember.imageCode" placeholder="图片验证码">
               <template #prefix>
@@ -43,7 +43,7 @@
                 <img v-show="!!imageCodeSrc" :src="imageCodeSrc" alt="验证码" v-on:click="loadImageCode()"/>
               </template>
             </a-input>
-          </a-form-item>-->
+          </a-form-item>
 
           <a-form-item class="form-item">
             <a-button type="primary" block html-type="submit" class="login-btn" size="large">
@@ -64,7 +64,7 @@ import { ref } from 'vue';
 import axios from "axios";
 import {message} from "ant-design-vue";
 import {useRouter} from "vue-router";
-// import store from "../store/index.js";
+import store from "../store/index.js";
 
 let router = useRouter();
 
@@ -85,7 +85,7 @@ const login = values => {
     if (data.success) {
       message.success("登录成功！");
       store.commit("setMember", data.content);
-      router.push("/home/welcome");
+      router.push("/home");
     } else {
       message.error(data.message);
     }
@@ -93,15 +93,15 @@ const login = values => {
 };
 
 // ----------- 图形验证码 --------------------
-/*const imageCodeToken = ref();
+const imageCodeToken = ref();
 const imageCodeSrc = ref();
-/!**
+/**
  * 加载图形验证码
- *!/
+ */
 const loadImageCode = () => {
   loginMember.value.imageCode = "";
   imageCodeToken.value = Tool.uuid(8);
   imageCodeSrc.value = import.meta.env.VITE_SERVER + '/nls/web/kaptcha/image-code/' + imageCodeToken.value;
 };
-loadImageCode();*/
+loadImageCode();
 </script>

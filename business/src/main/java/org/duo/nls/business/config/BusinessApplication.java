@@ -14,6 +14,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 public class BusinessApplication {
 
     public static void main(String[] args) {
+
         ConfigurableEnvironment environment = SpringApplication.run(BusinessApplication.class, args).getEnvironment();
         log.info("启动成功");
         log.info("测试地址：http://localhost:{}{}", environment.getProperty("server.port"), environment.getProperty("server.servlet.context-path"));
