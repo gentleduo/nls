@@ -3,6 +3,8 @@ import Home from '../view/home.vue'
 import Login from '../view/login.vue'
 import Register from "../view/register.vue";
 import Reset from "../view/reset.vue"
+import Welcome from "../view/home/welcom.vue"
+import Help from "../view/home/help.vue"
 
 const routes = [{
     path: '/',
@@ -18,7 +20,14 @@ const routes = [{
     component: Reset
 }, {
     path: '/home',
-    component: Home
+    component: Home,
+    children: [{
+        path: "welcome",
+        component: Welcome,
+    }, {
+        path: "help",
+        component: Help,
+    }]
 }]
 
 const router = createRouter({

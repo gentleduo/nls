@@ -5,10 +5,13 @@ import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.duo.nls.business.enums.SmsCodeUseEnum;
+import org.duo.nls.business.req.MemberLoginReq;
 import org.duo.nls.business.req.MemberRegisterReq;
 import org.duo.nls.business.req.MemberResetReq;
 import org.duo.nls.business.resp.CommonResp;
+import org.duo.nls.business.resp.MemberLoginResp;
 import org.duo.nls.business.service.KaptchaService;
+import org.duo.nls.business.service.MemberLoginLogService;
 import org.duo.nls.business.service.MemberService;
 import org.duo.nls.business.service.SmsCodeService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +33,8 @@ public class WebMemberController {
     @Resource
     private KaptchaService kaptchaService;
 
-//    @Resource
-//    private MemberLoginLogService memberLoginLogService;
+    @Resource
+    private MemberLoginLogService memberLoginLogService;
 
     @PostMapping("/register")
     public CommonResp<Object> register(@Valid @RequestBody MemberRegisterReq req) {
@@ -46,19 +49,19 @@ public class WebMemberController {
         return new CommonResp<>();
     }
 
-//    @PostMapping("/login")
-//    public CommonResp<MemberLoginResp> login(@Valid @RequestBody MemberLoginReq req) {
-//        req.setPassword(DigestUtil.md5Hex(req.getPassword().toLowerCase()));
-//
-//        log.info("会员登录开始：{}", req.getMobile());
-//
-//        // 校验图片验证码，防止机器人
-//        kaptchaService.validCode(req.getImageCode(), req.getImageCodeToken());
-//
-//        MemberLoginResp memberLoginResp = memberService.login(req);
-//
-//        return new CommonResp<>(memberLoginResp);
-//    }
+    @PostMapping("/login")
+    public CommonResp<MemberLoginResp> login(@Valid @RequestBody MemberLoginReq req) {
+        req.setPassword(DigestUtil.md5Hex(req.getPassword().toLowerCase()));
+
+        log.info("会员登录开始：{}", req.getMobile());
+
+        // 校验图片验证码，防止机器人
+        kaptchaService.validCode(req.getImageCode(), req.getImageCodeToken());
+
+        MemberLoginResp memberLoginResp = memberService.login(req);
+
+        return new CommonResp<>(memberLoginResp);
+    }
 
     @PostMapping("/reset")
     public CommonResp<Object> reset(@Valid @RequestBody MemberResetReq req) {
