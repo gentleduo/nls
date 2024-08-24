@@ -5,6 +5,7 @@ import Register from "../view/register.vue";
 import Reset from "../view/reset.vue"
 import Welcome from "../view/home/welcom.vue"
 import Help from "../view/home/help.vue"
+import Filetrans from "../view/home/filetrans.vue";
 
 const routes = [{
     path: '/',
@@ -22,6 +23,9 @@ const routes = [{
     path: '/home',
     component: Home,
     children: [{
+        path: "filetrans",
+        component: Filetrans,
+    }, {
         path: "welcome",
         component: Welcome,
     }, {
