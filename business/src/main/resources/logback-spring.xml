@@ -30,9 +30,10 @@
         <!-- %msg：日志输出内容 -->
         <!-- %n：换行符 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) --- [%15.15(%thread)] [%X{LOG_ID}]
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) -&#45;&#45; [%15.15(%thread)] [%X{LOG_ID}]
                 %cyan(%-40.40(%logger{40})) : %msg%n
-            </pattern>
+            </pattern>-->
+            <pattern>%d{mm:ss.SSS} %highlight(%-5level) %yellow(%-50logger{50} %-4line) %green(%-19X{LOG_ID}) %msg%n</pattern>
             <!-- 设置字符集 -->
             <charset>UTF-8</charset>
         </encoder>
@@ -61,7 +62,8 @@
         </filter>
         <!--日志文件输出格式 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50} %-4line %thread %-19X{LOG_ID} %msg%n</pattern>
             <!-- 设置字符集 -->
             <charset>UTF-8</charset>
         </encoder>
@@ -103,7 +105,8 @@
         </filter>
         <!--日志文件输出格式 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50} %-4line %thread %-19X{LOG_ID} %msg%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
         <!--有两个与RollingFileAppender交互的重要子组件。 第一个RollingFileAppender子组件，即RollingPolicy:负责执行翻转所需的操作。
@@ -144,7 +147,8 @@
         </filter>
         <!--日志文件输出格式 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50} %-4line %thread %-19X{LOG_ID} %msg%n</pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
         <!--有两个与RollingFileAppender交互的重要子组件。 第一个RollingFileAppender子组件，即RollingPolicy:负责执行翻转所需的操作。
@@ -185,7 +189,8 @@
         </filter>
         <!--日志文件输出格式 -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>
+           <!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{LOG_ID}] %logger{50} - %msg%n</pattern>-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %-50logger{50} %-4line %thread %-19X{LOG_ID} %msg%n</pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
         <!--有两个与RollingFileAppender交互的重要子组件。 第一个RollingFileAppender子组件，即RollingPolicy:负责执行翻转所需的操作。

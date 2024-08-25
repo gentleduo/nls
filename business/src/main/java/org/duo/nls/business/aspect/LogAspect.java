@@ -12,7 +12,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.duo.nls.business.util.SnowFlake;
-import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -42,8 +41,6 @@ public class LogAspect {
     @Around("pointcut()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         log.info("--------------------------环绕通知 开始--------------------------");
-        // 增加日志流水号
-        MDC.put("LOG_ID", String.valueOf(snowFlake.nextId()));
         long startTime = System.currentTimeMillis();
         // 开始打印请求日志
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
