@@ -1,7 +1,5 @@
 package org.duo.nls.business.resp;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -9,7 +7,9 @@ import java.util.Date;
 
 @Data
 public class FiletransQueryResp {
-    @JsonSerialize(using= ToStringSerializer.class)
+
+    // 解决前后端交互Long类型精度丢失的问题，
+    //@JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     private Long memberId;

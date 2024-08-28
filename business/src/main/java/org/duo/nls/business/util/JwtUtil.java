@@ -23,6 +23,7 @@ public class JwtUtil {
 
     public static String createLoginToken(Map<String, Object> map) {
         LOG.info("准备生成登录token，map：{}", map);
+        // 单位：分钟；24 * 60表示1天；
         return createToken(map, 24 * 60);
     }
 
