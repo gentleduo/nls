@@ -6,14 +6,14 @@
           项目模版
         </div>
         <a-form
-          :model="loginMember"
-          name="basic"
-          :wrapper-col="{ span: 24 }"
-          @finish="login"
+            :model="loginMember"
+            name="basic"
+            :wrapper-col="{ span: 24 }"
+            @finish="login"
         >
           <a-form-item
-            name="mobile" class="form-item"
-            :rules="[{ required: true, message: '请输入手机号' }]"
+              name="mobile" class="form-item"
+              :rules="[{ required: true, message: '请输入手机号' }]"
           >
             <a-input v-model:value="loginMember.mobile" placeholder="手机号" size="large">
               <template #prefix>
@@ -23,8 +23,8 @@
           </a-form-item>
 
           <a-form-item
-            name="password" class="form-item"
-            :rules="[{ required: true, message: '请输入密码' }]"
+              name="password" class="form-item"
+              :rules="[{ required: true, message: '请输入密码' }]"
           >
             <a-input-password v-model:value="loginMember.password" placeholder="密码" size="large">
               <template #prefix>
@@ -60,7 +60,7 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import {ref} from 'vue';
 import axios from "axios";
 import {message} from "ant-design-vue";
 import {useRouter} from "vue-router";

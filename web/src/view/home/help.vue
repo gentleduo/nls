@@ -1,7 +1,9 @@
 <template>
   <h1>HELP</h1>
-  {{ resp }}
-<!--  <a-input v-model:value="resp" @change="onChange"/>-->
+  <pre>
+    {{ resp }}
+  </pre>
+  <!--  <a-input v-model:value="resp" @change="onChange"/>-->
 </template>
 
 <script setup>

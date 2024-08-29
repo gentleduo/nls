@@ -248,6 +248,6 @@
     <!--所以虽然下面的记录器(logger)没有指定输出目标(appender-ref)，下面的记录器会继承root和org.duo.business中的appender，-->
     <!-- 注意：如果不加 additivity="false" 则此logger会将输出转发到自身以及祖先的logger的appender中，就会出现日志文件重复打印 -->
     <!--additivity=false代表禁止默认累计的行为，即org.duo.business.mapper中的日志只会记录到自己的appender中，不会附加地继承级别更高的记录器中的appender-->
-    <!-- <logger name="org.duo.business" level="trace"/>-->
+    <!-- <logger name="org.duo.business.mapper" level="trace"/>-->
 
 </configuration>

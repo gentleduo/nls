@@ -16,7 +16,7 @@
       <a-menu-item key="/home/welcome">
         <router-link to="/home/welcome">
           <CoffeeOutlined/>
-          <span>欢迎使用</span>
+          <span>首页</span>
         </router-link>
       </a-menu-item>
       <a-menu-item key="/home/filetrans">

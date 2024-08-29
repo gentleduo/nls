@@ -6,6 +6,8 @@ import Reset from "../view/reset.vue"
 import Welcome from "../view/home/welcom.vue"
 import Help from "../view/home/help.vue"
 import Filetrans from "../view/home/filetrans.vue";
+import Detail from "../view/app/detail.vue"
+import Label from "../view/home/label.vue"
 
 const routes = [{
     path: '/',
@@ -23,6 +25,12 @@ const routes = [{
     path: '/home',
     component: Home,
     children: [{
+        path: "label",
+        component: Label,
+    }, {
+        path: "detail",
+        component: Detail,
+    }, {
         path: "filetrans",
         component: Filetrans,
     }, {
@@ -32,6 +40,9 @@ const routes = [{
         path: "help",
         component: Help,
     }]
+}, {
+    path: "/app/detail",
+    component: Detail
 }]
 
 const router = createRouter({

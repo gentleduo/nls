@@ -10,12 +10,12 @@
         <template #title>
               <span>
                 <CoffeeOutlined/>
-                欢迎页面
+                首页
               </span>
         </template>
         <a-menu-item key="/home/welcome">
           <router-link to="/home/welcome">
-            <span>欢迎使用</span>
+            <span>首页</span>
           </router-link>
         </a-menu-item>
         <a-menu-item key="/home/help">
@@ -28,12 +28,22 @@
         <template #title>
               <span>
                 <VideoCameraOutlined/>
-                页面功能
+                业务管理
               </span>
         </template>
         <a-menu-item key="/home/filetrans">
           <router-link to="/home/filetrans">
             <span>语音识别</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="/home/detail">
+          <router-link to="/home/detail">
+            <span>分类管理</span>
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="/home/label">
+          <router-link to="/home/label">
+            <span>标签管理</span>
           </router-link>
         </a-menu-item>
       </a-sub-menu>
@@ -60,7 +70,7 @@ import {useRouter} from "vue-router";
 
 const router = useRouter();
 const selectedKeys = ref(['/home/welcome']);
-const openKeys = ref(['home']);
+const openKeys = ref(['/home/welcome']);
 
 watch(() => router.currentRoute.value.path, (newValue, oldValue) => {
   console.log('watch', newValue, oldValue);
