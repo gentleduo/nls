@@ -17,6 +17,8 @@ public class LabelInfo {
 
     private Date updateTime;
 
+    private String delFlag;
+
     public Long getId() {
         return id;
     }
@@ -73,6 +75,14 @@ public class LabelInfo {
         this.updateTime = updateTime;
     }
 
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -86,6 +96,7 @@ public class LabelInfo {
         sb.append(", comment=").append(comment);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", delFlag=").append(delFlag);
         sb.append("]");
         return sb.toString();
     }

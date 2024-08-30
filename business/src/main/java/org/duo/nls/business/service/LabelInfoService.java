@@ -1,6 +1,7 @@
 package org.duo.nls.business.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -10,10 +11,12 @@ import org.duo.nls.business.domain.LabelInfo;
 import org.duo.nls.business.domain.LabelInfoExample;
 import org.duo.nls.business.mapper.LabelInfoMapper;
 import org.duo.nls.business.req.LabelInfoQueryReq;
+import org.duo.nls.business.req.LabelInfoSaveReq;
 import org.duo.nls.business.resp.LabelInfoQueryResp;
 import org.duo.nls.business.resp.PageResp;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -32,8 +35,8 @@ public class LabelInfoService {
         if (StrUtil.isNotBlank(req.getName())) {
             criteria.andNameLike("%" + req.getName() + "%");
         }
-
-        labelInfoExample.setOrderByClause("id desc");
+        criteria.andDelFlagEqualTo("0");
+        labelInfoExample.setOrderByClause("sort asc");
 
         PageHelper.startPage(req.getPage(), req.getSize());
         List<LabelInfo> labelInfos = labelInfoMapper.selectByExample(labelInfoExample);
@@ -51,5 +54,27 @@ public class LabelInfoService {
         return pageResp;
     }
 
+    public void save(LabelInfoSaveReq req) {
+
+        Date now = new Date();
+        LabelInfo labelInfo = BeanUtil.copyProperties(req, LabelInfo.class);
+        if (ObjectUtil.isEmpty(req.getId())) {
+            // 新增
+            labelInfo.setCreateTime(now);
+            labelInfo.setUpdateTime(now);
+            labelInfoMapper.insert(labelInfo);
+        } else {
+            // 更新
+            labelInfo.setUpdateTime(now);
+            labelInfoMapper.updateByPrimaryKeySelective(labelInfo);
+        }
+    }
+
+    public void delete(Long id) {
+        LabelInfo labelInfo = new LabelInfo();
+        labelInfo.setId(id);
+        labelInfo.setDelFlag("1");
+        labelInfoMapper.updateByPrimaryKeySelective(labelInfo);
+    }
 
 }
