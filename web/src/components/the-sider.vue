@@ -46,6 +46,11 @@
             <span>标签管理</span>
           </router-link>
         </a-menu-item>
+        <a-menu-item key="/home/product">
+          <router-link to="/home/product">
+            <span>商品管理</span>
+          </router-link>
+        </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="/user">
         <template #title>

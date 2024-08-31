@@ -1,4 +1,4 @@
-package org.duo.nls.business.exception;
+package org.duo.nls.business.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -21,7 +21,7 @@
       </a-menu-item>
       <a-menu-item key="/home/filetrans">
         <router-link to="/home/filetrans">
-          <VideoCameraOutlined />
+          <VideoCameraOutlined/>
           <span>语音识别</span>
         </router-link>
       </a-menu-item>
@@ -55,11 +55,18 @@ watch(() => router.currentRoute.value.path, (newValue, oldValue) => {
 
 <style scoped>
 .logo {
+  background: url("/image/logo.ico");
   float: left;
-  width: 120px;
-  height: 31px;
+  width: 48px;
+  height: 32px;
   margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
+  background-size: 100% 100% /*
+    float: left;
+    width: 120px;
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    background: rgba(255, 255, 255, 0.3);
+    */
 }
 
 .ant-row-rtl .logo {

@@ -156,7 +156,7 @@ create table `member_login_log`
 DROP TABLE IF EXISTS `t_label_info`;
 CREATE TABLE `t_label_info`
 (
-    `id`          bigint      NOT NULL AUTO_INCREMENT COMMENT '标签id',
+    `id`          bigint      NOT NULL AUTO_INCREMENT COMMENT '自增主键',
     `parent`      bigint      NOT NULL DEFAULT 0 comment '父标签id',
     `name`        varchar(20) NOT NULL DEFAULT '' COMMENT '标签名称',
     `sort`        int(11)     NOT NULL DEFAULT '0' COMMENT '同一标签id下的顺序',
@@ -167,8 +167,28 @@ CREATE TABLE `t_label_info`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-INSERT INTO `t_label_info` VALUES (1,0,'事实型',0,'事实型标签','2024-08-29 14:08:50.000','2024-08-29 14:08:50.000'),(2,0,'统计型',1,'统
-计型标签','2024-08-29 15:25:00.001','2024-08-29 15:25:00.001'),(3,0,'挖掘型',2,'挖掘型标签','2024-08-29 15:25:00.002','2024-08-29 15:25
-:00.002'),(4,0,'规则型',3,'规则型标签','2024-08-29 15:25:00.003','2024-08-29 15:25:00.003');
+INSERT INTO `t_label_info`
+VALUES (1, 0, '事实型', 0, '事实型标签', '2024-08-29 14:08:50.000', '2024-08-29 14:08:50.000'),
+       (2, 0, '统计型', 1, '统
+计型标签', '2024-08-29 15:25:00.001', '2024-08-29 15:25:00.001'),
+       (3, 0, '挖掘型', 2, '挖掘型标签', '2024-08-29 15:25:00.002', '2024-08-29 15:25
+:00.002'),
+       (4, 0, '规则型', 3, '规则型标签', '2024-08-29 15:25:00.003', '2024-08-29 15:25:00.003');
 
-alter table t_label_info add del_flag char(1) NOT NULL DEFAULT '0' after update_time;
+alter table t_label_info
+    add del_flag char(1) NOT NULL DEFAULT '0' after update_time;
+
+DROP TABLE IF EXISTS `t_product_info`;
+CREATE TABLE `t_product_info`
+(
+    `id`          bigint      NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+    `name`        varchar(20) NOT NULL DEFAULT '' COMMENT '商品名称',
+    `category`    varchar(20) NOT NULL DEFAULT '' COMMENT '商品分类',
+    `tags`        varchar(100)         DEFAULT '' COMMENT '标签',
+    `comment`     varchar(100)         DEFAULT '' COMMENT '商品描述',
+    `create_time` datetime(3) NOT NULL COMMENT '创建时间',
+    `update_time` datetime(3) NOT NULL COMMENT '更新时间',
+    `del_flag`    char(1)     NOT NULL DEFAULT '0' COMMENT '删除标志',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;

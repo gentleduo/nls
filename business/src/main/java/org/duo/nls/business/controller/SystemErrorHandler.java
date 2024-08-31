@@ -1,5 +1,7 @@
 package org.duo.nls.business.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.duo.nls.business.enums.SystemErrorMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
@@ -10,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 

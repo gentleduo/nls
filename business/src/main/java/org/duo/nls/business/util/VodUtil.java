@@ -14,8 +14,8 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.vod.model.v20170321.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
+import org.duo.nls.business.enums.BusinessExceptionEnum;
 import org.duo.nls.business.exception.BusinessException;
-import org.duo.nls.business.exception.BusinessExceptionEnum;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 import {createApp} from 'vue'
 import './style.css'
 import App from './App.vue'
-import Antd from 'ant-design-vue'
+import Antd, {message}  from 'ant-design-vue'
 import 'ant-design-vue/dist/reset.css'
 import * as Icons from '@ant-design/icons-vue'
 import router from "./router"
@@ -30,19 +30,25 @@ axios.interceptors.request.use(function (config) {
 }, error => {
     return Promise.reject(error);
 });
+
 axios.interceptors.response.use(function (response) {
     console.log('返回结果：', response);
     return response;
 }, error => {
     console.log('返回错误：', error);
     const response = error.response;
-    const status = response.status;
-    if (status === 401) {
-        // 判断状态码是401 跳转到登录
-        console.log("未登录，跳到登录页面");
+    // const status = response.status;
+    // if (status === 401) {
+    //     // 判断状态码是401 跳转到登录
+    //     console.log("未登录，跳到登录页面");
+    //     store.commit("setMember", {});
+    //     router.push("/login");
+    // }
+    message.error(response.data.message);
+    setTimeout(() => {
         store.commit("setMember", {});
-        router.push("/login");
-    }
+        router.push('/login');
+    }, 1000);
     return Promise.reject(error);
 });
 

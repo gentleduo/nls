@@ -1,6 +1,7 @@
 package org.duo.nls.business.exception;
 
 import lombok.Data;
+import org.duo.nls.business.enums.BusinessExceptionEnum;
 
 @Data
 public class BusinessException extends RuntimeException {

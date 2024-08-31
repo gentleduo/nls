@@ -8,46 +8,36 @@ import Help from "../view/home/help.vue"
 import Filetrans from "../view/home/filetrans.vue";
 import Detail from "../view/app/detail.vue"
 import Label from "../view/home/label.vue"
+import Product from "../view/home/product.vue"
 
 const routes = [{
-    path: '/',
-    redirect: '/login'
+    path: '/', redirect: '/login'
 }, {
-    path: '/login',
-    component: Login
+    path: '/login', component: Login
 }, {
-    path: "/register",
-    component: Register
+    path: "/register", component: Register
 }, {
-    path: "/reset",
-    component: Reset
+    path: "/reset", component: Reset
 }, {
-    path: '/home',
-    component: Home,
-    children: [{
-        path: "label",
-        component: Label,
+    path: '/home', component: Home, children: [{
+        path: "product", component: Product,
     }, {
-        path: "detail",
-        component: Detail,
+        path: "label", component: Label,
     }, {
-        path: "filetrans",
-        component: Filetrans,
+        path: "detail", component: Detail,
     }, {
-        path: "welcome",
-        component: Welcome,
+        path: "filetrans", component: Filetrans,
     }, {
-        path: "help",
-        component: Help,
+        path: "welcome", component: Welcome,
+    }, {
+        path: "help", component: Help,
     }]
 }, {
-    path: "/app/detail",
-    component: Detail
+    path: "/app/detail", component: Detail
 }]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+    history: createWebHistory(), routes
 })
 
 export default router

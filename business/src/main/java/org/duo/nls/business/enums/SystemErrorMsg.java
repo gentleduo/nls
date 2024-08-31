@@ -1,4 +1,4 @@
-package org.duo.nls.business.controller;
+package org.duo.nls.business.enums;
 
 public enum SystemErrorMsg {
 

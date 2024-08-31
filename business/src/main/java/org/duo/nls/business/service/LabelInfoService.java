@@ -26,6 +26,17 @@ public class LabelInfoService {
     @Resource
     private LabelInfoMapper labelInfoMapper;
 
+    public List<LabelInfoQueryResp> all() {
+
+        LabelInfoExample labelInfoExample = new LabelInfoExample();
+        LabelInfoExample.Criteria criteria = labelInfoExample.createCriteria();
+        criteria.andDelFlagEqualTo("0");
+        labelInfoExample.setOrderByClause("sort asc");
+        List<LabelInfo> labelInfoQueryRespList = labelInfoMapper.selectByExample(labelInfoExample);
+        // 列表复制
+        List<LabelInfoQueryResp> list = BeanUtil.copyToList(labelInfoQueryRespList, LabelInfoQueryResp.class);
+        return list;
+    }
 
     public PageResp<LabelInfoQueryResp> query(LabelInfoQueryReq req) {
 
@@ -62,7 +73,7 @@ public class LabelInfoService {
             // 新增
             labelInfo.setCreateTime(now);
             labelInfo.setUpdateTime(now);
-            labelInfoMapper.insert(labelInfo);
+            labelInfoMapper.insertSelective(labelInfo);
         } else {
             // 更新
             labelInfo.setUpdateTime(now);
@@ -77,4 +88,13 @@ public class LabelInfoService {
         labelInfoMapper.updateByPrimaryKeySelective(labelInfo);
     }
 
+    public void delete(List<Long> ids) {
+
+        LabelInfoExample labelInfoExample = new LabelInfoExample();
+        LabelInfoExample.Criteria criteria = labelInfoExample.createCriteria();
+        criteria.andIdIn(ids);
+        LabelInfo labelInfo = new LabelInfo();
+        labelInfo.setDelFlag("1");
+        labelInfoMapper.updateByExampleSelective(labelInfo, labelInfoExample);
+    }
 }
