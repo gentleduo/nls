@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -58,6 +59,7 @@ public class ProductInfoService {
 
         Date now = new Date();
         ProductInfo productInfo = BeanUtil.copyProperties(req, ProductInfo.class);
+        productInfo.setTags(req.getTags().stream().collect(Collectors.joining(",")));
         if (ObjectUtil.isEmpty(req.getId())) {
             // 新增
             productInfo.setCreateTime(now);

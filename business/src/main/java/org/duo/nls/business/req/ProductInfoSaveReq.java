@@ -3,6 +3,8 @@ package org.duo.nls.business.req;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.util.ArrayList;
+
 @Data
 public class ProductInfoSaveReq {
 
@@ -14,8 +16,8 @@ public class ProductInfoSaveReq {
 
     @NotBlank(message = "【商品分类】不能为空")
     private String category;
-    
-    private String tags;
+
+    private ArrayList<String> tags;
 
     private String comment;
 }

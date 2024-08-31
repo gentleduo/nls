@@ -62,8 +62,24 @@
       <a-form-item label="商品分类">
         <a-input v-model:value="product.category"/>
       </a-form-item>
+      <!--      <a-form-item label="标签">
+              <a-input v-model:value="product.tags"/>
+            </a-form-item>-->
       <a-form-item label="标签">
-        <a-input v-model:value="product.tags"/>
+        <a-tree-select
+            v-model:value="product.tags"
+            show-search
+            style="width: 100%"
+            :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
+            placeholder="选择标签"
+            allow-clear
+            multiple
+            tree-default-expand-all
+            :tree-data="level1"
+            tree-node-filter-prop="name"
+            :fieldNames="{label:'name', value: 'name'}"
+        >
+        </a-tree-select>
       </a-form-item>
       <a-form-item label="商品描述">
         <a-input v-model:value="product.comment"/>
@@ -109,6 +125,22 @@ const columns = [{
   title: '操作',
   dataIndex: 'operation'
 }];
+const level1 = ref();
+level1.value = [];
+
+const handleQueryLabel = () => {
+  // 如果不清空现有数据，则编辑保存重新加载数据后，再点编辑，则列表显示的还是编辑前的数据
+  axios.get("/nls/web/label-info/all").then((response) => {
+    let labelData = response.data;
+    if (labelData.success) {
+      let labels = labelData.content;
+      level1.value = [];
+      level1.value = Tool.array2Tree(labels, 0);
+    } else {
+      message.error(data.message);
+    }
+  });
+};
 
 const handleQuery = (params) => {
   if (!params) {
@@ -130,10 +162,13 @@ const handleQuery = (params) => {
     tableLoading.value = false;
     let data = response.data;
     if (data.success) {
+
       products.value = data.content.list;
       // 设置分页控件的值
       pagination.value.current = params.page;
       pagination.value.total = data.content.total;
+      // 加载标签信息
+      handleQueryLabel();
     } else {
       message.error(data.message);
     }
@@ -169,12 +204,17 @@ const handleOk = () => {
 const edit = (record) => {
   modalVisible.value = true;
   product.value = Tool.copy(record);
-  ;
+  if (Tool.isNotEmpty(product.value.tags)) {
+    product.value.tags = product.value.tags.split(",");
+  } else {
+    product.value.tags = undefined;
+  }
 };
 
 const add = () => {
   modalVisible.value = true;
   product.value = {};
+  console.log(product.value.tags);
 };
 
 const handleDelete = (id) => {
