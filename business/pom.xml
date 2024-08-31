@@ -112,11 +112,9 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.aliyun.vod</groupId>
-            <artifactId>upload</artifactId>
+            <groupId>com.aliyun</groupId>
+            <artifactId>vod-upload</artifactId>
             <version>1.4.15</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/aliyun-java-vod-upload-1.4.15.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -132,6 +130,25 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <!-- 如果将SpringBoot打成jar运行，则需要添加一个spring-boot-maven-plugin到pom.xml中 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--在不使用spring-boot-start-parent构建springboot应用的时候必须加入下面两项配置后，maven打包时才会把第三方jar包一起打入 -->
+                <!--                <executions>
+                                    <execution>
+                                        <goals>
+                                            <goal>repackage</goal>
+                                        </goals>
+                                    </execution>
+                                </executions>-->
+                <!-- executable设置为true表示在jar中添加启动脚本，制作在linux环境下可执行的jar。即：在linux环境下，通过chmod a+x后可以通过./app.jar的方式运行，但是这种打包方式将无法使用jar -xvf解压jar包（可以使用unzip命令进行解压） -->
+                <!-- executable设置为false的话，则是指定普通的可执行jar，通过java -jar命令运行，并且也可以通过jar -xvf解压jar包 -->
+                <!-- 仅在打算直接执行时才启用此选项，一般情况下都设置为false -->
+                <configuration>
+                    <executable>true</executable>
                 </configuration>
             </plugin>
         </plugins>

@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --mode=dev",
+    "dev": "vite --mode=dev --port=8085",
     "build-dev": "vite build --mode=dev",
+    "build-uat": "vite build --mode=uat",
     "build-pord": "vite build --mode=prod",
     "preview": "vite preview"
   },
